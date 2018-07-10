@@ -4,7 +4,10 @@ const mongoose = require('mongoose');
 const Router = require('koa-router');
 const bodyParser = require('koa-bodyparser');
 const cors = require('koa2-cors');
+const path = require('path');
 const session = require('koa-session');
+const multer = require('koa-multer');
+const static = require('koa-static'); 
 // 引入user模块schema
 let user = require('./appApi/user.js');
 // 引入list模块schema
@@ -24,6 +27,11 @@ const CONFIG = {
 app.use(session(CONFIG, app));
 app.use(bodyParser());
 app.use(cors());
+const staticPath = './public';
+app.use(static(
+    path.join( __dirname,  staticPath)
+  ));
+app.use(static('D:\public', 'index'));
 // 装载所有子路由
 let router = new Router();
 // router.use()使用该接口,第一个参数路由，第二个参数导出user接口的routes();
