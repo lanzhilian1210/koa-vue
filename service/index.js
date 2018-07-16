@@ -12,6 +12,8 @@ const static = require('koa-static');
 let user = require('./appApi/user.js');
 // 引入list模块schema
 let list = require('./appApi/list.js');
+// 引入上传
+let upload = require('./appApi/upload');
 //引入connect mongo数据库
 const {connect,initSchemas} = require('./database/init.js');
 app.keys = ['some secret hurr'];
@@ -27,16 +29,17 @@ const CONFIG = {
 app.use(session(CONFIG, app));
 app.use(bodyParser());
 app.use(cors());
-const staticPath = './public';
-app.use(static(
-    path.join( __dirname,  staticPath)
-  ));
-app.use(static('D:\public', 'index'));
+const staticPath = './public/uploads/2018712';
+app.use(static(__dirname , staticPath));
+  // app.use( async ( ctx ) => {
+  //   ctx.body = 'hello world'
+  // })
 // 装载所有子路由
 let router = new Router();
 // router.use()使用该接口,第一个参数路由，第二个参数导出user接口的routes();
 router.use('/api/v1',user.routes());
 router.use('/api/v1',list.routes());
+router.use('/api/v1',upload.routes());
 //加载路由中间件
 app.use(router.routes());  //加载接口
 app.use(router.allowedMethods());
