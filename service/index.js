@@ -14,6 +14,8 @@ let user = require('./appApi/user.js');
 let list = require('./appApi/list.js');
 // 引入上传
 let upload = require('./appApi/upload');
+// 引入fs读取文件
+let getJson = require('./appApi/getJson');
 //引入connect mongo数据库
 const {connect,initSchemas} = require('./database/init.js');
 app.keys = ['some secret hurr'];
@@ -40,6 +42,7 @@ let router = new Router();
 router.use('/api/v1',user.routes());
 router.use('/api/v1',list.routes());
 router.use('/api/v1',upload.routes());
+router.use('/api/v1',getJson.routes());
 //加载路由中间件
 app.use(router.routes());  //加载接口
 app.use(router.allowedMethods());

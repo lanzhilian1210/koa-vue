@@ -6,6 +6,7 @@
         <button @click="downLoadBtn">下载</button> 
         <img :src="srcImg" alt="">
         <ul>
+            <button @click="choujiang">抽奖</button>
             <li v-for="(item,index) in list" :key="index">
                 <h2 ref="h2">{{item.title}}</h2>
                 <p>{{item.text}}</p>
@@ -29,6 +30,9 @@
             this.getList();
         },
         methods:{
+            choujiang(){
+                alert(1);
+            },
             downLoadBtn() {
                this.axios.get('/v1/download').then((res)=>{
                 //    this.srcImg = res.data;
@@ -39,8 +43,6 @@
                 // console.log(e.target.files[0])  
                 this.file = e.target.files[0];
                 //根据项目需求做具体处理，比如说获取文件名  
-                var reader = new FileReader();
-                
                 let imgRUL = window.URL.createObjectURL(this.file);
                 this.srcImg = imgRUL;
                 },  
