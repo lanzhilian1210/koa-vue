@@ -1,27 +1,8 @@
 {
-    "ID":"000beec8e59248f099b0ce6152bf6c0d",
-    "GOODS_SERIAL_NUMBER":"4901681243426",
-    "SHOP_ID":"402880e860166f3c0160167897d60002",
-    "SUB_ID":null,
     "GOOD_TYPE":0,
     "STATE":0,
     "IS_DELETE":1,
     "NAME":"斑马C-BA31-ZA-BL新Z-1针管式中油笔0.7蓝",
-    "ORI_PRICE":4.50,
-    "PRESENT_PRICE":4.50,
-    "AMOUNT":10000,
-    "DETAIL":null,
-    "BRIEF":null,
-    "SALES_COUNT":0,
-    "IMAGE1":null,
-    "IMAGE2":null,
-    "IMAGE3":null,
-    "IMAGE4":null,
-    "IMAGE5":null,
-    "ORIGIN_PLACE":null,
     "GOOD_SCENT":null,
-    "CREATE_TIME":1512208900250,
-    "UPDATE_TIME":1512208900250,
-    "IS_RECOMMEND":0,
-    "PICTURE_COMPERSS_PATH":null
+    "CREATE_TIME":1512208900250
 }
