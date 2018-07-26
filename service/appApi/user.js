@@ -45,7 +45,8 @@ router.post('/login',async(ctx)=>{
         ctx.session.id = findUser._id;
         ctx.body = {
             code:200,
-            message:'可以登入'
+            message:'可以登入',
+            objId:findUser._id
         }
     } else {
         ctx.body = {
@@ -54,6 +55,24 @@ router.post('/login',async(ctx)=>{
         }
     }
 })
-
+// 状态值
+router.post('/state',async(ctx) => {
+    let id = ctx.request.body.id;
+    let findUser = await user.findById(id);
+    ctx.body = findUser.state;
+})
+// 修改状态
+router.post('/newstate',async(ctx) => {
+    let id = ctx.request.body.id;
+     await user.findByIdAndUpdate(id,{ $set: { state: true }},(err,docs)=>{
+        if(err){
+            console.log(err)
+        }else{
+            console.log('修改成功')
+        }
+    });
+    let findUser = await user.findById(id);
+    ctx.body = findUser.state;
+})
 
 module.exports = router;

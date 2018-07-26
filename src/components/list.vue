@@ -3,6 +3,8 @@
         <p>title:<input type="text" name="title" v-model="title"></p>
         <p>text:<input type="text" name="text" v-model="text"></p>
         <p><input type="submit" name="submit" value="提交内容" @click="handleReg"></p>
+        <div v-show="show">show</div>
+        <button @click="showHandle">isShow</button>
     </div>
 </template>
 <script>
@@ -14,9 +16,33 @@
               listUrl:url, 
               title:'', 
               text: '',
+              show:false,
             }
         },
+        mounted() {
+            this.showLoad();
+        },
         methods:{
+            showHandle() {
+                axios.post('/v1/newstate',{
+                    id:sessionStorage.getItem('id')
+                }).then(res=>{
+                    console.log(res);
+                    this.show = res.data;
+                }).catch(err=>{
+                    console.log(err);
+                })
+            },
+            showLoad() {
+                axios.post('/v1/state',{
+                    id:sessionStorage.getItem('id')
+                }).then(res=>{
+                    this.show = res.data;
+                    
+                }).catch(err=>{
+                    console.log(err);
+                })
+            },
             handleReg() {
                 this.getRegData();
             },

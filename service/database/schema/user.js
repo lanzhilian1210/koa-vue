@@ -8,7 +8,7 @@ const UserSchema = new Schema({
     UserId:ObjectId,
     username:{type:String,unique:true,required:true},
     password:String,
-    state: {type:String,default:false},
+    state: {type:String,default:true},
     createAt:{type:Date,default:Date.now()},
     lastLoginAt:{type:Date,default:Date.now()}
 });
