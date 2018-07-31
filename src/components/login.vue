@@ -27,7 +27,7 @@
                         username: this.name,
                         password: this.password
                 }).then(res=>{
-                    this.id = res.objId;
+                    this.id = res.data.objId;
                     sessionStorage.setItem('id',this.id);
                     if(res.data.code == '200') {
                         this.$router.push('/list');

@@ -1,7 +1,10 @@
 const Router = require('koa-router');
 let router = new Router();
 const mongoose = require('mongoose');
-const user = require("../database/schema/user")
+const user = require("../database/schema/user");
+const session = require('koa-session');
+
+
 //注册
 router.post('/reg',async(ctx)=>{
     let newUser = new user(ctx.request.body);
@@ -42,6 +45,8 @@ router.post('/login',async(ctx)=>{
     };
     let newUser = new user();
     await newUser.comparePassword(password,findUser.password).then(isMatch=>{
+        // ctx.session.username = "张三";
+        // console.log(ctx.session.username);
         ctx.body = {code:200,message:isMatch,objId:findUser._id};
     }).catch(err=>{
         ctx.body = {code:500,message:err};

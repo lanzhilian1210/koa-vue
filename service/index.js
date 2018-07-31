@@ -21,7 +21,7 @@ const {connect,initSchemas} = require('./database/init.js');
 app.keys = ['some secret hurr'];
 const CONFIG = {
     key: 'koa:sess', /** (string) cookie key (default is koa:sess) */
-    maxAge: 86400000,
+    maxAge: 3000,
     overwrite: true, /** (boolean) can overwrite or not (default true) */
     httpOnly: false, /** (boolean) httpOnly or not (default true) */
     signed: true, /** (boolean) signed or not (default true) */
