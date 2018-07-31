@@ -40,20 +40,12 @@ router.post('/login',async(ctx)=>{
         };
         return ;
     };
-    if(password == findUser.password) {
-        // ctx.cookies.set('id', findUser._id,{maxAge: 2*60*60*1000})
-        ctx.session.id = findUser._id;
-        ctx.body = {
-            code:200,
-            message:'可以登入',
-            objId:findUser._id
-        }
-    } else {
-        ctx.body = {
-            code:500,
-            message:'密码错误'
-        }
-    }
+    let newUser = new user();
+    await newUser.comparePassword(password,findUser.password).then(isMatch=>{
+        ctx.body = {code:200,message:isMatch,objId:findUser._id};
+    }).catch(err=>{
+        ctx.body = {code:500,message:err};
+    })
 })
 // 状态值
 router.post('/state',async(ctx) => {
