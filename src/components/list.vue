@@ -5,6 +5,13 @@
         <p><input type="submit" name="submit" value="提交内容" @click="handleReg"></p>
         <div v-show="show">show</div>
         <button @click="showHandle">isShow</button>
+        <div style="width:100%;height:2px;background:red;margin-top:5px;"></div>
+        <div>
+           <div style="margin-bottom:10px;">学校： <input type="text" v-model="university" /> <button @click="subInfo1">添加</button> </div>
+           <div style="margin-bottom:10px;">院系： <input type="text" v-model="major" /> <button @click="subInfo2">添加</button></div>
+           <div style="margin-bottom:10px;">专业： <input type="text" v-model="majorName"/> <button @click="subInfo3">添加</button></div>
+           <div style="margin-bottom:10px;">班级： <input type="text" v-model="classInfo"> <button @click="subInfo4">添加</button></div>
+        </div>
     </div>
 </template>
 <script>
@@ -17,12 +24,47 @@
               title:'', 
               text: '',
               show:false,
+              university: '',
+              major: '',
+              majorName: '',
+              classInfo: '',
             }
         },
         mounted() {
             this.showLoad();
         },
         methods:{
+            // 学校
+            subInfo1() {
+                axios.post('v1/universityInfo',{name:this.university}).then((res)=>{
+                    console.log(res);
+                }).catch((err)=>{
+                    console.log(err);
+                })
+            },
+            // 院系
+            subInfo2() {
+                axios.post('v1/universityInfo',{name:this.university}).then((res)=>{
+                    console.log(res);
+                }).catch((err)=>{
+                    console.log(err);
+                })
+            },
+            //专业
+            subInfo3() {
+                axios.post('v1/universityInfo',{name:this.university}).then((res)=>{
+                    console.log(res);
+                }).catch((err)=>{
+                    console.log(err);
+                })
+            },
+            subInfo4() {
+                axios.post('v1/universityInfo',{name:this.university}).then((res)=>{
+                    console.log(res);
+                }).catch((err)=>{
+                    console.log(err);
+                })
+            },
             showHandle() {
                 axios.post('/v1/newstate',{
                     id:sessionStorage.getItem('id')

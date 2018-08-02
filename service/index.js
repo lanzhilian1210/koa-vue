@@ -16,6 +16,14 @@ let list = require('./appApi/list.js');
 let upload = require('./appApi/upload');
 // 引入fs读取文件
 let getJson = require('./appApi/getJson');
+// 引入学校名称表
+let universityInfo = require('./appApi/university');
+// 引入院系表
+let majorsInfo = require('./appApi/majors');
+// 引入专业表
+let majorNameInfo = require('./appApi/majorName');
+// 引入班级表
+let classInfo = require('./appApi/class');
 //引入connect mongo数据库
 const {connect,initSchemas} = require('./database/init.js');
 app.keys = ['some secret hurr'];
@@ -43,6 +51,10 @@ router.use('/api/v1',user.routes());
 router.use('/api/v1',list.routes());
 router.use('/api/v1',upload.routes());
 router.use('/api/v1',getJson.routes());
+router.use('/api/v1',universityInfo.routes());
+router.use('/api/v1',majorsInfo.routes());
+router.use('/api/v1',majorNameInfo.routes());
+router.use('/api/v1',classInfo.routes());
 //加载路由中间件
 app.use(router.routes());  //加载接口
 app.use(router.allowedMethods());
