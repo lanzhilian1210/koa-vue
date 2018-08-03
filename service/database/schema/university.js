@@ -7,7 +7,7 @@ let ObjectId = Schema.Types.ObjectId //声明object类型
 const  universitySchema = ({
     universityId:ObjectId,
     name:String,
-    departments:[ObjectId]
+    departments:[]
 });
 
 //发布模型

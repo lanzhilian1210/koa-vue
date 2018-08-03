@@ -12,6 +12,7 @@
            <div style="margin-bottom:10px;">专业： <input type="text" v-model="majorName"/> <button @click="subInfo3">添加</button></div>
            <div style="margin-bottom:10px;">班级： <input type="text" v-model="classInfo"> <button @click="subInfo4">添加</button></div>
         </div>
+        <div><button @click="addAll">添加信息</button></div>
     </div>
 </template>
 <script>
@@ -34,6 +35,9 @@
             this.showLoad();
         },
         methods:{
+            addAll() {
+                console.log('all');
+            },
             // 学校
             subInfo1() {
                 axios.post('v1/universityInfo',{name:this.university}).then((res)=>{
@@ -44,7 +48,7 @@
             },
             // 院系
             subInfo2() {
-                axios.post('v1/universityInfo',{name:this.university}).then((res)=>{
+                axios.post('v1/majorsInfo',{name:this.major}).then((res)=>{
                     console.log(res);
                 }).catch((err)=>{
                     console.log(err);
@@ -52,14 +56,15 @@
             },
             //专业
             subInfo3() {
-                axios.post('v1/universityInfo',{name:this.university}).then((res)=>{
+                axios.post('v1/majorName',{name:this.majorName}).then((res)=>{
                     console.log(res);
                 }).catch((err)=>{
                     console.log(err);
                 })
             },
+            // 班级
             subInfo4() {
-                axios.post('v1/universityInfo',{name:this.university}).then((res)=>{
+                axios.post('v1/className',{name:this.classInfo}).then((res)=>{
                     console.log(res);
                 }).catch((err)=>{
                     console.log(err);
