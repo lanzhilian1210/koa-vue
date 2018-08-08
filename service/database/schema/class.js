@@ -7,6 +7,7 @@ let ObjectId = Schema.Types.ObjectId //声明object类型
 const  classSchema = ({
     majorsId:ObjectId,
     name:String,
+    students:[],
     major:String,
     majorName:String,
     university:String,

@@ -5,7 +5,7 @@ const  majorName = require('../database/schema/majorName');
 router.post('/className',async(ctx)=>{
     let classInfo = new className(ctx.request.body);
     await classInfo.save().then((res)=>{
-        majorName.update({_id:'5b62c5f4da6ff616b49ec098'},{$push:{departments:res._id}},(err)=>{
+        majorName.update({_id:'5b63b90f62d1f720c8550b30'},{$push:{departments:res._id}},(err)=>{
             if(err){
                 console.log(err);
             } else {

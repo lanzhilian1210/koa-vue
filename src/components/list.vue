@@ -13,6 +13,9 @@
            <div style="margin-bottom:10px;">班级： <input type="text" v-model="classInfo"> <button @click="subInfo4">添加</button></div>
         </div>
         <div><button @click="addAll">添加信息</button></div>
+        <div>
+            查询:<input value="输入学生姓名"/>
+        </div>
     </div>
 </template>
 <script>
@@ -36,7 +39,7 @@
         },
         methods:{
             addAll() {
-                console.log('all');
+               axios.post().then().catch();
             },
             // 学校
             subInfo1() {
